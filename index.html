@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demo Mouseflow — Plan Gratuito</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- ============================================= -->
+  <!-- SCRIPT DE MOUSEFLOW                            -->
+  <!-- Reemplaza WEBSITE-ID por tu ID real del panel  -->
+  <!-- de Mouseflow (Settings > Website ID) para que  -->
+  <!-- esta página empiece a grabar sesiones,         -->
+  <!-- heatmaps, funnels, etc.                        -->
+  <!-- ============================================= -->
+  <script>
+    window._mfq = window._mfq || [];
+    (function() {
+      var mf = document.createElement("script");
+      mf.type = "text/javascript"; mf.async = true;
+      mf.src = "//cdn.mouseflow.com/projects/WEBSITE-ID.js";
+      document.getElementsByTagName("head")[0].appendChild(mf);
+    })();
+  </script>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <span class="brand-dot"></span>
+        Mouseflow Demo
+      </div>
+      <nav class="nav">
+        <a href="#heatmaps">Heatmaps</a>
+        <a href="#recording">Grabaciones</a>
+        <a href="#funnels">Funnels</a>
+        <a href="#forms">Formularios</a>
+        <a href="#feedback">Feedback</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>Demostración de herramientas del plan gratuito de Mouseflow</h1>
+      <p>
+        Esta página está pensada como <strong>ambiente de pruebas</strong>: interactúa con los
+        botones, formularios y enlaces para generar datos reales en tu cuenta de Mouseflow
+        (clics, scroll, grabaciones de sesión, embudos y encuestas de feedback).
+      </p>
+      <div class="hero-actions">
+        <button class="btn btn-primary" data-mf-event="hero-cta-principal" onclick="logEvent('CTA principal')">
+          Botón principal
+        </button>
+        <button class="btn btn-secondary" data-mf-event="hero-cta-secundario" onclick="logEvent('CTA secundario')">
+          Botón secundario
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= HEATMAPS ================= -->
+  <section id="heatmaps" class="section">
+    <div class="container">
+      <h2>1. Heatmaps (clics, movimiento y scroll)</h2>
+      <p>
+        Mouseflow genera automáticamente <em>heatmaps</em> de clic, movimiento y scroll para
+        cualquier página con el script instalado. Haz clic varias veces en distintas zonas
+        de esta cuadrícula para simular un patrón de interacción.
+      </p>
+      <div class="grid-demo">
+        <button class="grid-btn" onclick="logEvent('Heatmap A')">Zona A</button>
+        <button class="grid-btn" onclick="logEvent('Heatmap B')">Zona B</button>
+        <button class="grid-btn" onclick="logEvent('Heatmap C')">Zona C</button>
+        <button class="grid-btn" onclick="logEvent('Heatmap D')">Zona D</button>
+        <button class="grid-btn" onclick="logEvent('Heatmap E')">Zona E</button>
+        <button class="grid-btn" onclick="logEvent('Heatmap F')">Zona F</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== SCROLLMAP FILLER ============== -->
+  <section class="section section-alt">
+    <div class="container">
+      <h2>2. Contenido largo para Scrollmaps</h2>
+      <p>
+        Esta sección es intencionalmente larga: sirve para que el <em>scrollmap</em> de
+        Mouseflow registre hasta dónde llegan realmente los visitantes antes de abandonar
+        la página.
+      </p>
+      <div class="scroll-filler">
+        <div class="scroll-block">25% de la página</div>
+        <div class="scroll-block">50% de la página</div>
+        <div class="scroll-block">75% de la página</div>
+        <div class="scroll-block">100% — llegaste al final ✔</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== SESSION RECORDING ============== -->
+  <section id="recording" class="section">
+    <div class="container">
+      <h2>3. Grabación de sesiones</h2>
+      <p>
+        Toda la actividad en esta página (clics, movimientos, scroll, taps en móvil) queda
+        registrada como una grabación de sesión reproducible desde el panel de Mouseflow.
+        Prueba estas interacciones variadas:
+      </p>
+      <div class="rec-actions">
+        <button class="btn btn-outline" onclick="toggleBox()">Mostrar / ocultar panel</button>
+        <input class="input" type="text" placeholder="Escribe algo aquí..." oninput="logEvent('Input de texto')">
+        <select class="input" onchange="logEvent('Selección: ' + this.value)">
+          <option value="">Elige una opción</option>
+          <option value="opcion-1">Opción 1</option>
+          <option value="opcion-2">Opción 2</option>
+          <option value="opcion-3">Opción 3</option>
+        </select>
+      </div>
+      <div id="hiddenBox" class="hidden-box hidden">
+        Este panel apareció por una interacción del usuario — ideal para verificar clics en
+        elementos dinámicos dentro de la grabación.
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FUNNELS ================= -->
+  <section id="funnels" class="section section-alt">
+    <div class="container">
+      <h2>4. Funnels (embudos de conversión)</h2>
+      <p>
+        Simula un embudo de 3 pasos. En Mouseflow podrías crear un Funnel real usando estas
+        mismas páginas/pasos como etapas para medir dónde abandonan los usuarios.
+      </p>
+      <div class="funnel">
+        <div class="funnel-step active" id="step1">
+          <h3>Paso 1: Landing</h3>
+          <p>El visitante llega a la página.</p>
+          <button class="btn btn-primary" onclick="goToStep(2)">Continuar al paso 2</button>
+        </div>
+        <div class="funnel-step" id="step2">
+          <h3>Paso 2: Producto</h3>
+          <p>El visitante revisa un producto o servicio.</p>
+          <button class="btn btn-primary" onclick="goToStep(3)">Continuar al paso 3</button>
+          <button class="btn btn-outline" onclick="goToStep(1)">Volver</button>
+        </div>
+        <div class="funnel-step" id="step3">
+          <h3>Paso 3: Conversión</h3>
+          <p>El visitante completa la acción deseada (compra, registro, etc.)</p>
+          <button class="btn btn-primary" onclick="completeFunnel()">Finalizar embudo</button>
+          <button class="btn btn-outline" onclick="goToStep(2)">Volver</button>
+        </div>
+      </div>
+      <div class="funnel-progress">
+        <div class="funnel-progress-bar" id="funnelProgress"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FORMS ================= -->
+  <section id="forms" class="section">
+    <div class="container">
+      <h2>5. Analítica de formularios</h2>
+      <p>
+        Mouseflow detecta automáticamente los formularios de la página y mide campos con más
+        abandono, tiempo de llenado y tasa de envío. Prueba este formulario de ejemplo:
+      </p>
+      <form class="demo-form" onsubmit="return submitForm(event)">
+        <label>Nombre
+          <input class="input" type="text" name="nombre" required>
+        </label>
+        <label>Correo electrónico
+          <input class="input" type="email" name="correo" required>
+        </label>
+        <label>Mensaje
+          <textarea class="input" name="mensaje" rows="3"></textarea>
+        </label>
+        <button class="btn btn-primary" type="submit">Enviar formulario</button>
+      </form>
+      <p id="formResult" class="form-result"></p>
+    </div>
+  </section>
+
+  <!-- ================= FEEDBACK ================= -->
+  <section id="feedback" class="section section-alt">
+    <div class="container">
+      <h2>6. Encuestas de feedback</h2>
+      <p>
+        El plan gratuito de Mouseflow permite lanzar encuestas emergentes de feedback.
+        Este botón simula la aparición de una de estas encuestas:
+      </p>
+      <button class="btn btn-secondary" onclick="showFeedback()">Abrir encuesta de feedback</button>
+
+      <div id="feedbackModal" class="modal hidden">
+        <div class="modal-card">
+          <h3>¿Qué tan útil fue esta página?</h3>
+          <div class="rating">
+            <button onclick="rate(1)">😞</button>
+            <button onclick="rate(2)">😐</button>
+            <button onclick="rate(3)">🙂</button>
+            <button onclick="rate(4)">😃</button>
+            <button onclick="rate(5)">🤩</button>
+          </div>
+          <button class="btn btn-outline" onclick="closeFeedback()">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= LOG DE EVENTOS ================= -->
+  <section class="section">
+    <div class="container">
+      <h2>Registro de interacciones (solo local, no envía nada a Mouseflow)</h2>
+      <p>
+        Este panel es solo una referencia visual para ti al probar la página; lo que
+        realmente queda grabado en Mouseflow depende del script instalado, no de esta lista.
+      </p>
+      <ul id="eventLog" class="event-log"></ul>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>Página de demostración estática — lista para hostear en GitHub Pages.</p>
+      <p>Recuerda reemplazar <code>WEBSITE-ID</code> en el script de Mouseflow con tu ID real.</p>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
