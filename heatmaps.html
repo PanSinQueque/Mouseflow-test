@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mapas de calor · Demo plan gratuito</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<div class="shell">
+
+  <aside class="side">
+    <a href="index.html" class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-text">Plan Gratuito<small>demo de herramientas</small></span>
+    </a>
+    <div class="nav-group-label">Herramientas</div>
+    <ul class="nav-list">
+      <li><a href="index.html"><span class="bullet"></span>Resumen</a></li>
+      <li><a href="heatmaps.html"><span class="bullet"></span>Mapas de calor</a></li>
+      <li><a href="recordings.html"><span class="bullet"></span>Grabaciones de sesión</a></li>
+      <li><a href="funnels.html"><span class="bullet"></span>Embudos de conversión</a></li>
+      <li><a href="forms.html"><span class="bullet"></span>Analítica de formularios</a></li>
+      <li><a href="plan.html"><span class="bullet"></span>Plan y límites</a></li>
+    </ul>
+    <div class="side-foot">
+      Simulación educativa, sin conexión a cuentas reales.<br>
+      <a href="https://mouseflow.com" target="_blank" rel="noopener">mouseflow.com ↗</a>
+    </div>
+  </aside>
+
+  <div class="topbar">
+    <a href="index.html" class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-text">Plan Gratuito</span>
+    </a>
+  </div>
+  <nav class="topbar-nav">
+    <a href="index.html">Resumen</a>
+    <a href="heatmaps.html">Mapas de calor</a>
+    <a href="recordings.html">Grabaciones</a>
+    <a href="funnels.html">Embudos</a>
+    <a href="forms.html">Formularios</a>
+    <a href="plan.html">Plan</a>
+  </nav>
+
+  <main class="main">
+    <div class="container">
+
+      <div class="page-head">
+        <div class="eyebrow"><span class="dot"></span>Herramienta 01</div>
+        <h1>Mapas de calor</h1>
+        <p class="lead">
+          Interactúa con la página de ejemplo de abajo como lo haría un visitante real.
+          Cada clic, movimiento o desplazamiento queda registrado y coloreado según su
+          intensidad, igual que en un mapa de calor real.
+        </p>
+      </div>
+
+      <div class="btn-row" style="margin-bottom:16px;">
+        <div class="pill-toggle" id="mode-toggle">
+          <button data-mode="click" class="active">Clics</button>
+          <button data-mode="move">Movimiento</button>
+          <button data-mode="scroll">Profundidad de scroll</button>
+        </div>
+        <button class="btn ghost small" id="reset-btn">Reiniciar</button>
+        <span class="tag accent" id="point-count">0 clics registrados</span>
+      </div>
+
+      <div class="demo-layout">
+
+        <div class="browser">
+          <div class="browser-bar">
+            <div class="dots"><span></span><span></span><span></span></div>
+            <div class="url">tu-sitio-de-ejemplo.com/inicio</div>
+          </div>
+          <div class="mock-page" id="mock-page">
+            <div class="mock-content" id="mock-content">
+              <div class="mock-nav">
+                <div class="mock-logo">Acme Studio</div>
+                <div class="mock-links"><span>Producto</span><span>Precios</span><span>Ayuda</span></div>
+              </div>
+              <div class="mock-hero">
+                <h4>Diseña sitios que la gente entiende</h4>
+                <p>Una plantilla mínima para probar dónde mira y hace clic tu audiencia.</p>
+                <span class="mock-cta" id="cta-btn">Empezar gratis</span>
+              </div>
+              <div class="mock-cards">
+                <div class="mock-card"><div class="ic"></div><b>Plantillas</b><span>Empieza desde cero</span></div>
+                <div class="mock-card"><div class="ic"></div><b>Integraciones</b><span>Conecta tus datos</span></div>
+                <div class="mock-card"><div class="ic"></div><b>Soporte</b><span>Ayuda en minutos</span></div>
+              </div>
+              <div class="mock-hero" style="padding-top:6px;">
+                <h4 style="font-size:1.1rem;">¿Aún con dudas?</h4>
+                <p>Sigue bajando: esta sección casi nunca la ve nadie.</p>
+                <span class="mock-cta" style="background:var(--paper-dim); color:var(--ink);" id="cta-btn-2">Hablar con ventas</span>
+              </div>
+              <div class="mock-foot">© Acme Studio — página de ejemplo para la demo</div>
+            </div>
+            <canvas id="heat-canvas"></canvas>
+            <div class="scrollbar-track" id="scrollbar-track"><div class="scrollbar-thumb" id="scrollbar-thumb"></div></div>
+          </div>
+        </div>
+
+        <aside>
+          <div class="card" style="margin-bottom:14px;">
+            <div class="panel-title">Leyenda de intensidad</div>
+            <div class="legend"><div class="bar"></div></div>
+            <div style="display:flex; justify-content:space-between;">
+              <span class="mono" style="font-size:.68rem; color:var(--ink-faint);">frío</span>
+              <span class="mono" style="font-size:.68rem; color:var(--ink-faint);">caliente</span>
+            </div>
+          </div>
+
+          <div class="card" style="margin-bottom:14px;">
+            <div class="panel-title">Qué estás viendo</div>
+            <p id="mode-explainer" style="font-size:.84rem; margin:0;">
+              Modo clics: cada clic añade una mancha de calor. Las zonas donde varias
+              personas hacen clic repetidamente se vuelven más intensas.
+            </p>
+          </div>
+
+          <div class="card" id="scroll-panel" style="display:none;">
+            <div class="panel-title">Profundidad alcanzada</div>
+            <div class="meter"><i id="scroll-meter"></i></div>
+            <p style="font-size:.8rem; margin:0;"><span id="scroll-pct">0</span>% de la página vista en esta sesión.</p>
+          </div>
+        </aside>
+
+      </div>
+
+      <p class="disclaimer">
+        Simulación local en tu navegador: no se envían datos a ningún servidor. En un plan
+        gratuito real, este tipo de mapa se genera de forma agregada a partir de las sesiones
+        de tus visitantes reales, hasta el límite mensual del plan.
+      </p>
+
+    </div>
+  </main>
+</div>
+
+<script src="assets/js/main.js"></script>
+<script src="assets/js/heatmaps.js"></script>
+</body>
+</html>
