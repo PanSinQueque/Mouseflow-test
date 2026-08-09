@@ -201,6 +201,7 @@ a{ color: inherit; }
 
 /* mobile top bar */
 .topbar{ display: none; }
+.topbar-nav{ display: none; }
 
 /* main content */
 .main{
