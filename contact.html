@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contacto — Kobo</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="index.html" class="brand">
+      <svg class="mark" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 10c0 6 4 9 8 9s8-3 8-9" stroke="#2F4538" stroke-width="2" stroke-linecap="round"/><ellipse cx="12" cy="10" rx="8" ry="2.4" stroke="#2F4538" stroke-width="2"/></svg>
+      Kobo
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="shop.html">Tienda</a></li>
+      <li><a href="about.html">Estudio</a></li>
+      <li><a href="faq.html">Preguntas</a></li>
+      <li><a href="contact.html" aria-current="page">Contacto</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a class="cart-btn" href="cart.html">
+        Carrito <span class="cart-count" data-cart-count>0</span>
+      </a>
+      <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <div class="wrap page-head">
+    <span class="eyebrow">Contacto</span>
+    <h1 style="font-size:clamp(2rem,4vw,3rem);">Escríbenos</h1>
+    <p>¿Dudas sobre una pieza, un pedido o una colaboración? Cuéntanos. Este formulario es parte de un sitio de demostración: no se envía a ningún servidor.</p>
+  </div>
+
+  <section class="section" style="padding-top:12px;">
+    <div class="wrap split">
+      <div class="form-card">
+        <form id="contact-form" novalidate>
+          <div class="row-2">
+            <div class="field">
+              <label for="c-name">Nombre</label>
+              <input type="text" id="c-name" name="name" required>
+              <div class="error-msg">Introduce tu nombre.</div>
+            </div>
+            <div class="field">
+              <label for="c-email">Correo</label>
+              <input type="email" id="c-email" name="email" required>
+              <div class="error-msg">Introduce un correo válido.</div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="c-subject">Motivo</label>
+            <select id="c-subject" name="subject" required>
+              <option value="">Selecciona un motivo</option>
+              <option value="order">Sobre un pedido</option>
+              <option value="product">Pregunta sobre una pieza</option>
+              <option value="wholesale">Venta al por mayor</option>
+              <option value="other">Otro</option>
+            </select>
+            <div class="error-msg">Selecciona un motivo.</div>
+          </div>
+
+          <div class="field">
+            <label>Prefiero que te comuniques por</label>
+            <div class="choice-group">
+              <label class="choice"><input type="radio" name="contact-method" value="email" checked>Correo</label>
+              <label class="choice"><input type="radio" name="contact-method" value="phone">Teléfono</label>
+              <label class="choice"><input type="radio" name="contact-method" value="either">Cualquiera</label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="c-message">Mensaje</label>
+            <textarea id="c-message" name="message" required></textarea>
+            <div class="error-msg">Cuéntanos brevemente en qué podemos ayudarte.</div>
+          </div>
+
+          <div class="check-row" style="margin-bottom:22px;">
+            <input type="checkbox" id="c-subscribe" name="subscribe">
+            <label for="c-subscribe">Quiero recibir el boletín mensual del estudio</label>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">Enviar mensaje</button>
+          <div class="form-status"></div>
+        </form>
+      </div>
+
+      <div>
+        <h3>Antes de escribir</h3>
+        <p>Muchas preguntas frecuentes ya están respondidas en nuestra sección de preguntas — sobre envíos, cuidado de las piezas y cambios.</p>
+        <a href="faq.html" class="btn btn-outline" style="margin-bottom:36px;">Ver preguntas frecuentes</a>
+
+        <h3>Taller</h3>
+        <p class="mono" style="font-size:0.88rem;">Lunes a viernes, 10:00–17:00<br>Visitas solo con cita previa</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <hr class="hairline" style="margin-bottom:24px;">
+    <div class="footer-bottom">
+      <span>© 2026 Kobo Estudio — sitio de demostración</span>
+      <span>Este formulario no envía datos a ningún servidor</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/main.js"></script>
+<script>
+  initDemoForm(document.getElementById("contact-form"), "Mensaje enviado. Te responderemos en 1–2 días hábiles.");
+</script>
+</body>
+</html>

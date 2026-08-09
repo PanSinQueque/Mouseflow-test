@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tienda — Kobo</title>
+<meta name="description" content="Catálogo completo de cerámica hecha a mano. Sitio de demostración.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="index.html" class="brand">
+      <svg class="mark" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 10c0 6 4 9 8 9s8-3 8-9" stroke="#2F4538" stroke-width="2" stroke-linecap="round"/><ellipse cx="12" cy="10" rx="8" ry="2.4" stroke="#2F4538" stroke-width="2"/></svg>
+      Kobo
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="shop.html" aria-current="page">Tienda</a></li>
+      <li><a href="about.html">Estudio</a></li>
+      <li><a href="faq.html">Preguntas</a></li>
+      <li><a href="contact.html">Contacto</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a class="cart-btn" href="cart.html">
+        Carrito <span class="cart-count" data-cart-count>0</span>
+      </a>
+      <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <div class="wrap page-head">
+    <span class="eyebrow">Catálogo</span>
+    <h1 style="font-size:clamp(2rem,4vw,3rem);">Toda la colección</h1>
+    <p>Nueve piezas de la tanda actual. El inventario cambia con cada cocción.</p>
+  </div>
+
+  <section class="section" style="padding-top:24px;">
+    <div class="wrap">
+      <div class="filter-bar">
+        <div class="chips" role="group" aria-label="Filtrar por categoría">
+          <button class="chip" data-filter="all" aria-pressed="true">Todo</button>
+          <button class="chip" data-filter="bowls" aria-pressed="false">Cuencos</button>
+          <button class="chip" data-filter="cups" aria-pressed="false">Tazas</button>
+          <button class="chip" data-filter="vases" aria-pressed="false">Jarrones</button>
+          <button class="chip" data-filter="plates" aria-pressed="false">Platos</button>
+        </div>
+        <select class="select" id="sort-select" aria-label="Ordenar por">
+          <option value="default">Orden sugerido</option>
+          <option value="price-asc">Precio: menor a mayor</option>
+          <option value="price-desc">Precio: mayor a menor</option>
+          <option value="name">Nombre A–Z</option>
+        </select>
+      </div>
+
+      <div class="product-grid" id="shop-grid"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <hr class="hairline" style="margin-bottom:24px;">
+    <div class="footer-bottom">
+      <span>© 2026 Kobo Estudio — sitio de demostración</span>
+      <a href="contact.html" style="text-decoration:none;">¿Dudas? Escríbenos</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/main.js"></script>
+<script>
+  let currentFilter = "all";
+  let currentSort = "default";
+
+  function filteredSorted(){
+    let list = currentFilter === "all" ? [...PRODUCTS] : PRODUCTS.filter(p => p.cat === currentFilter);
+    if(currentSort === "price-asc") list.sort((a,b) => a.price - b.price);
+    if(currentSort === "price-desc") list.sort((a,b) => b.price - a.price);
+    if(currentSort === "name") list.sort((a,b) => a.name.localeCompare(b.name));
+    return list;
+  }
+
+  function labelCat(cat){
+    return { bowls: "Cuenco", cups: "Taza", vases: "Jarrón", plates: "Plato" }[cat] || cat;
+  }
+
+  function renderShop(){
+    const grid = document.getElementById("shop-grid");
+    const list = filteredSorted();
+    grid.innerHTML = list.map(p => `
+      <article class="card">
+        <a class="card-media" href="product.html?id=${p.id}" style="background:${p.tone}22;">
+          ${potteryShape(p.shape, p.tone)}
+        </a>
+        <div class="card-body">
+          <span class="card-cat">${labelCat(p.cat)}</span>
+          <a href="product.html?id=${p.id}"><h3 class="card-title">${p.name}</h3></a>
+          <div class="card-foot">
+            <span class="card-price mono">€${p.price}</span>
+            <button class="btn-icon" title="Añadir al carrito" data-add-to-cart="${p.id}">+</button>
+          </div>
+        </div>
+      </article>
+    `).join("");
+    grid.querySelectorAll("[data-add-to-cart]").forEach(btn => {
+      btn.addEventListener("click", () => addToCart(btn.getAttribute("data-add-to-cart")));
+    });
+  }
+
+  document.querySelectorAll(".chip").forEach(chip => {
+    chip.addEventListener("click", () => {
+      document.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", "false"));
+      chip.setAttribute("aria-pressed", "true");
+      currentFilter = chip.getAttribute("data-filter");
+      renderShop();
+    });
+  });
+
+  document.getElementById("sort-select").addEventListener("change", (e) => {
+    currentSort = e.target.value;
+    renderShop();
+  });
+
+  renderShop();
+</script>
+</body>
+</html>

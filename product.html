@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Producto — Kobo</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="index.html" class="brand">
+      <svg class="mark" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 10c0 6 4 9 8 9s8-3 8-9" stroke="#2F4538" stroke-width="2" stroke-linecap="round"/><ellipse cx="12" cy="10" rx="8" ry="2.4" stroke="#2F4538" stroke-width="2"/></svg>
+      Kobo
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="shop.html" aria-current="page">Tienda</a></li>
+      <li><a href="about.html">Estudio</a></li>
+      <li><a href="faq.html">Preguntas</a></li>
+      <li><a href="contact.html">Contacto</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a class="cart-btn" href="cart.html">
+        Carrito <span class="cart-count" data-cart-count>0</span>
+      </a>
+      <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <div class="wrap breadcrumb">
+    <a href="index.html">Inicio</a> / <a href="shop.html">Tienda</a> / <span id="crumb-name">Producto</span>
+  </div>
+
+  <section class="wrap product-detail" id="product-root">
+    <!-- se rellena por JS -->
+  </section>
+
+  <section class="section section-alt">
+    <div class="wrap">
+      <h2 class="related-title" style="font-size:1.6rem;">También te puede interesar</h2>
+      <div class="product-grid" id="related-grid"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <hr class="hairline" style="margin-bottom:24px;">
+    <div class="footer-bottom">
+      <span>© 2026 Kobo Estudio — sitio de demostración</span>
+      <a href="shop.html" style="text-decoration:none;">Volver a la tienda</a>
+    </div>
+  </div>
+</footer>
+
+<div class="toast"></div>
+
+<script src="assets/main.js"></script>
+<script>
+  function labelCat(cat){
+    return { bowls: "Cuenco", cups: "Taza", vases: "Jarrón", plates: "Plato" }[cat] || cat;
+  }
+
+  function getParam(name){
+    return new URLSearchParams(window.location.search).get(name);
+  }
+
+  let currentQty = 1;
+
+  function renderProduct(){
+    const id = getParam("id") || PRODUCTS[0].id;
+    const p = PRODUCTS.find(x => x.id === id) || PRODUCTS[0];
+    document.title = `${p.name} — Kobo`;
+    document.getElementById("crumb-name").textContent = p.name;
+
+    const root = document.getElementById("product-root");
+    root.innerHTML = `
+      <div class="gallery">
+        <div class="gallery-main" id="gallery-main" style="background:${p.tone}18;">
+          ${potteryShape(p.shape, p.tone)}
+        </div>
+        <div class="gallery-thumbs">
+          ${[0,1,2].map(i => `<button data-thumb="${i}" aria-current="${i===0}" style="background:${p.tone}${i===0? '30':'18'};">${potteryShape(p.shape, p.tone)}</button>`).join("")}
+        </div>
+      </div>
+      <div>
+        <span class="card-cat">${labelCat(p.cat)}</span>
+        <h1 style="font-size:2rem;margin-top:6px;">${p.name}</h1>
+        <p class="price-tag mono">€${p.price}</p>
+        <p>${p.desc}</p>
+
+        <div class="field">
+          <label>Tamaño</label>
+          <div class="choice-group" id="size-group">
+            <label class="choice"><input type="radio" name="size" value="S" checked>S</label>
+            <label class="choice"><input type="radio" name="size" value="M">M</label>
+            <label class="choice"><input type="radio" name="size" value="L">L</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Cantidad</label>
+          <div class="qty-stepper" id="qty-stepper">
+            <button type="button" data-qty="dec" aria-label="Disminuir cantidad">−</button>
+            <span id="qty-value">1</span>
+            <button type="button" data-qty="inc" aria-label="Aumentar cantidad">+</button>
+          </div>
+        </div>
+
+        <button class="btn btn-primary btn-block" id="add-btn" style="margin-top:8px;">Añadir al carrito — €${p.price}</button>
+        <a href="cart.html" class="btn btn-ghost btn-block" style="margin-top:10px;">Ver carrito</a>
+
+        <div style="margin-top:36px;">
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false" aria-controls="panel-details">
+              Detalles de la pieza <span class="plus">+</span>
+            </button>
+            <div class="accordion-panel" id="panel-details">
+              <div class="accordion-panel-inner">Arcilla de gres, esmalte mate. Apta para horno, microondas y lavavajillas. Peso aproximado 340g.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false" aria-controls="panel-shipping">
+              Envío y devoluciones <span class="plus">+</span>
+            </button>
+            <div class="accordion-panel" id="panel-shipping">
+              <div class="accordion-panel-inner">Envío en 3–5 días hábiles. Devoluciones gratuitas dentro de los 30 días, la pieza debe estar sin usar.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false" aria-controls="panel-care">
+              Cuidado de la pieza <span class="plus">+</span>
+            </button>
+            <div class="accordion-panel" id="panel-care">
+              <div class="accordion-panel-inner">Evita cambios bruscos de temperatura. Lavar con esponja suave para conservar el esmalte.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    initAccordions();
+
+    document.getElementById("add-btn").addEventListener("click", () => {
+      addToCart(p.id, currentQty);
+    });
+    document.getElementById("qty-stepper").addEventListener("click", (e) => {
+      const action = e.target.getAttribute("data-qty");
+      if(!action) return;
+      currentQty = action === "inc" ? currentQty + 1 : Math.max(1, currentQty - 1);
+      document.getElementById("qty-value").textContent = currentQty;
+    });
+    root.querySelectorAll("[data-thumb]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        root.querySelectorAll("[data-thumb]").forEach(b => b.setAttribute("aria-current", "false"));
+        btn.setAttribute("aria-current", "true");
+      });
+    });
+
+    renderRelated(p);
+  }
+
+  function renderRelated(current){
+    const others = PRODUCTS.filter(p => p.id !== current.id && p.cat === current.cat).slice(0,3);
+    const list = others.length ? others : PRODUCTS.filter(p => p.id !== current.id).slice(0,3);
+    document.getElementById("related-grid").innerHTML = list.map(p => `
+      <article class="card">
+        <a class="card-media" href="product.html?id=${p.id}" style="background:${p.tone}22;">
+          ${potteryShape(p.shape, p.tone)}
+        </a>
+        <div class="card-body">
+          <span class="card-cat">${labelCat(p.cat)}</span>
+          <a href="product.html?id=${p.id}"><h3 class="card-title">${p.name}</h3></a>
+          <div class="card-foot">
+            <span class="card-price mono">€${p.price}</span>
+            <button class="btn-icon" title="Añadir al carrito" data-add-to-cart="${p.id}">+</button>
+          </div>
+        </div>
+      </article>
+    `).join("");
+    document.querySelectorAll("#related-grid [data-add-to-cart]").forEach(btn => {
+      btn.addEventListener("click", () => addToCart(btn.getAttribute("data-add-to-cart")));
+    });
+  }
+
+  renderProduct();
+</script>
+</body>
+</html>

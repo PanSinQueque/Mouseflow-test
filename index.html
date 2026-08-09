@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kobo — Cerámica hecha a mano</title>
+<meta name="description" content="Piezas de cerámica torneadas a mano, en tiradas pequeñas. Sitio de demostración.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="index.html" class="brand">
+      <svg class="mark" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 10c0 6 4 9 8 9s8-3 8-9" stroke="#2F4538" stroke-width="2" stroke-linecap="round"/><ellipse cx="12" cy="10" rx="8" ry="2.4" stroke="#2F4538" stroke-width="2"/></svg>
+      Kobo
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" aria-current="page">Inicio</a></li>
+      <li><a href="shop.html">Tienda</a></li>
+      <li><a href="about.html">Estudio</a></li>
+      <li><a href="faq.html">Preguntas</a></li>
+      <li><a href="contact.html">Contacto</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a class="cart-btn" href="cart.html">
+        Carrito <span class="cart-count" data-cart-count>0</span>
+      </a>
+      <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="wrap hero">
+    <div class="hero-copy">
+      <span class="eyebrow">Estudio de cerámica · Tirada corta</span>
+      <h1>Piezas para la mesa de cada día, torneadas una a una.</h1>
+      <p class="lede">Trabajamos arcilla local en un taller pequeño. Cada cuenco, taza y jarrón sale del torno con su propia huella, sin dos piezas idénticas.</p>
+      <div class="hero-actions">
+        <a href="shop.html" class="btn btn-primary">Ver la colección</a>
+        <a href="about.html" class="btn btn-outline">Conocer el estudio</a>
+      </div>
+    </div>
+    <div class="hero-figure">
+      <svg viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg" style="width:60%;margin:auto;">
+        <path d="M42 12 C40 12 40 22 36 26 C24 38 22 52 26 64 C29 74 71 74 74 64 C78 52 76 38 64 26 C60 22 60 12 58 12" fill="none" stroke="#2F4538" stroke-width="2.6" stroke-linejoin="round"/>
+        <circle cx="86" cy="16" r="3.2" fill="none" stroke="#2F4538" stroke-width="1.4" opacity="0.6"/>
+      </svg>
+    </div>
+  </section>
+
+  <hr class="hairline">
+
+  <section class="section">
+    <div class="wrap section-head">
+      <div>
+        <span class="eyebrow">Piezas destacadas</span>
+        <h2>De este mes</h2>
+      </div>
+      <a href="shop.html" class="btn btn-ghost">Ver todo el catálogo</a>
+    </div>
+    <div class="wrap product-grid" id="featured-grid"></div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="wrap">
+      <div class="values-grid">
+        <div class="value-item">
+          <span class="num">Torno</span>
+          <h3>Hecho a mano</h3>
+          <p>Cada pieza pasa por el torno de un solo artesano, de principio a fin.</p>
+        </div>
+        <div class="value-item">
+          <span class="num">Horno</span>
+          <h3>Cocción en tandas</h3>
+          <p>Cocemos en tandas pequeñas para controlar el esmalte y la temperatura.</p>
+        </div>
+        <div class="value-item">
+          <span class="num">Envío</span>
+          <h3>Embalaje cuidado</h3>
+          <p>Cada envío se acolcha a mano; llega listo para usarse desde el primer día.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap newsletter">
+      <div>
+        <span class="eyebrow" style="color:#CFE0C6;">Boletín</span>
+        <h2>Piezas nuevas, primero para ti</h2>
+        <p>Un correo al mes cuando sale una tanda nueva del horno. Sin relleno.</p>
+      </div>
+      <form id="newsletter-form" novalidate>
+        <input type="email" name="email" placeholder="tu@correo.com" required aria-label="Correo electrónico">
+        <button type="submit" class="btn btn-primary">Suscribirme</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h4>Kobo</h4>
+        <p style="max-width:32ch;">Estudio de cerámica hecha a mano. Sitio de demostración con fines de prueba.</p>
+      </div>
+      <div>
+        <h4>Tienda</h4>
+        <ul>
+          <li><a href="shop.html">Todas las piezas</a></li>
+          <li><a href="shop.html#bowls">Cuencos</a></li>
+          <li><a href="shop.html#vases">Jarrones</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Estudio</h4>
+        <ul>
+          <li><a href="about.html">Nuestra historia</a></li>
+          <li><a href="faq.html">Preguntas frecuentes</a></li>
+          <li><a href="contact.html">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Síguenos</h4>
+        <ul>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Pinterest</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr class="hairline" style="margin-bottom:24px;">
+    <div class="footer-bottom">
+      <span>© 2026 Kobo Estudio — sitio de demostración</span>
+      <span>Hecho con torno, horno y paciencia</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/main.js"></script>
+<script>
+  function renderFeatured(){
+    const grid = document.getElementById("featured-grid");
+    const featured = PRODUCTS.slice(0, 3);
+    grid.innerHTML = featured.map(p => `
+      <article class="card">
+        <a class="card-media" href="product.html?id=${p.id}" style="background:${p.tone}22;">
+          ${potteryShape(p.shape, p.tone)}
+        </a>
+        <div class="card-body">
+          <span class="card-cat">${labelCat(p.cat)}</span>
+          <a href="product.html?id=${p.id}"><h3 class="card-title">${p.name}</h3></a>
+          <div class="card-foot">
+            <span class="card-price mono">€${p.price}</span>
+            <button class="btn-icon" title="Añadir al carrito" data-add-to-cart="${p.id}">+</button>
+          </div>
+        </div>
+      </article>
+    `).join("");
+    document.querySelectorAll("[data-add-to-cart]").forEach(btn => {
+      btn.addEventListener("click", () => addToCart(btn.getAttribute("data-add-to-cart")));
+    });
+  }
+  function labelCat(cat){
+    return { bowls: "Cuenco", cups: "Taza", vases: "Jarrón", plates: "Plato" }[cat] || cat;
+  }
+  renderFeatured();
+  initDemoForm(document.getElementById("newsletter-form"), "Gracias, te avisaremos de la próxima tanda.");
+</script>
+</body>
+</html>
