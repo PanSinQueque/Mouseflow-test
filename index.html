@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Demo · Herramientas del plan gratuito · Análisis de comportamiento</title>
+<meta name="description" content="Demostración interactiva y no oficial de las herramientas incluidas en un plan gratuito de análisis de comportamiento web: mapas de calor, grabaciones, embudos y analítica de formularios.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<div class="shell">
+
+  <!-- nav lateral (escritorio) -->
+  <aside class="side">
+    <a href="index.html" class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-text">Plan Gratuito<small>demo de herramientas</small></span>
+    </a>
+
+    <div class="nav-group-label">Herramientas</div>
+    <ul class="nav-list">
+      <li><a href="index.html"><span class="bullet"></span>Resumen</a></li>
+      <li><a href="heatmaps.html"><span class="bullet"></span>Mapas de calor</a></li>
+      <li><a href="recordings.html"><span class="bullet"></span>Grabaciones de sesión</a></li>
+      <li><a href="funnels.html"><span class="bullet"></span>Embudos de conversión</a></li>
+      <li><a href="forms.html"><span class="bullet"></span>Analítica de formularios</a></li>
+      <li><a href="plan.html"><span class="bullet"></span>Plan y límites</a></li>
+    </ul>
+
+    <div class="side-foot">
+      Simulación educativa, sin conexión a cuentas reales.<br>
+      <a href="https://mouseflow.com" target="_blank" rel="noopener">mouseflow.com ↗</a>
+    </div>
+  </aside>
+
+  <!-- nav superior (móvil) -->
+  <div class="topbar">
+    <a href="index.html" class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-text">Plan Gratuito</span>
+    </a>
+  </div>
+  <nav class="topbar-nav">
+    <a href="index.html">Resumen</a>
+    <a href="heatmaps.html">Mapas de calor</a>
+    <a href="recordings.html">Grabaciones</a>
+    <a href="funnels.html">Embudos</a>
+    <a href="forms.html">Formularios</a>
+    <a href="plan.html">Plan</a>
+  </nav>
+
+  <main class="main">
+    <div class="container">
+
+      <div class="eyebrow"><span class="dot"></span>Demostración interactiva</div>
+
+      <section class="hero" data-cursor-hero>
+        <div class="hero-grid" aria-hidden="true"></div>
+        <div class="hero-inner">
+          <h1>Así se ve el plan gratuito de análisis de comportamiento en acción.</h1>
+          <p style="margin-top:14px;">
+            Mueve el cursor por esta sección: así es exactamente lo que estas herramientas
+            registran en un sitio real —posición, clics y tiempo— para reconstruir cómo
+            navegan tus visitantes. Explora cada módulo simulado desde el menú.
+          </p>
+          <div class="btn-row">
+            <a href="heatmaps.html" class="btn accent">Probar mapas de calor</a>
+            <a href="recordings.html" class="btn ghost">Ver una grabación</a>
+          </div>
+        </div>
+        <div id="cursor-dot"></div>
+        <div id="cursor-coords"></div>
+        <div class="hero-hint">seguimiento en vivo del cursor</div>
+      </section>
+
+      <div class="stat-row">
+        <div class="stat"><b>500</b><span>sesiones / mes</span></div>
+        <div class="stat"><b>1</b><span>sitio web</span></div>
+        <div class="stat"><b>4</b><span>herramientas incluidas</span></div>
+        <div class="stat"><b>0 €</b><span>coste, sin tarjeta</span></div>
+      </div>
+
+      <h2>Herramientas incluidas en el plan gratuito</h2>
+      <p class="lead" style="max-width:60ch;">
+        Cada tarjeta abre una simulación funcional del módulo real: interactúa con
+        páginas de ejemplo, reproduce sesiones falsas y observa cómo se construyen
+        los datos, sin necesidad de instalar nada ni crear una cuenta.
+      </p>
+
+      <div class="tool-grid">
+        <a class="tool-card" href="heatmaps.html">
+          <span class="num">01</span>
+          <h3>Mapas de calor</h3>
+          <p>Haz clic sobre una página de ejemplo y observa cómo se acumulan los puntos de calor en tiempo real.</p>
+          <span class="go">Abrir demo →</span>
+        </a>
+        <a class="tool-card" href="recordings.html">
+          <span class="num">02</span>
+          <h3>Grabaciones de sesión</h3>
+          <p>Reproduce sesiones simuladas con controles de reproducción, velocidad y línea de tiempo.</p>
+          <span class="go">Abrir demo →</span>
+        </a>
+        <a class="tool-card" href="funnels.html">
+          <span class="num">03</span>
+          <h3>Embudos de conversión</h3>
+          <p>Visualiza el abandono paso a paso entre distintas etapas de un recorrido de compra.</p>
+          <span class="go">Abrir demo →</span>
+        </a>
+        <a class="tool-card" href="forms.html">
+          <span class="num">04</span>
+          <h3>Analítica de formularios</h3>
+          <p>Rellena un formulario de ejemplo y observa qué campos generan más fricción.</p>
+          <span class="go">Abrir demo →</span>
+        </a>
+      </div>
+
+      <div class="card" style="display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap;">
+        <div>
+          <h3 style="margin-bottom:4px;">¿Cuánto incluye exactamente el plan gratuito?</h3>
+          <p style="margin:0; font-size:.9rem;">Revisa los límites de sesiones, retención de datos y la herramienta de feedback.</p>
+        </div>
+        <a href="plan.html" class="btn ghost">Ver plan y límites</a>
+      </div>
+
+      <p class="disclaimer">
+        Este sitio es un proyecto de demostración independiente y no oficial, pensado para
+        explicar de forma visual cómo funcionan las herramientas de un plan gratuito de
+        análisis de comportamiento web. No está afiliado a Mouseflow ApS ni transmite datos
+        reales: todas las sesiones, clics y estadísticas que ves aquí son generados localmente
+        en tu navegador con fines educativos.
+      </p>
+
+    </div>
+  </main>
+</div>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

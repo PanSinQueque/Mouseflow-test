@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Analítica de formularios · Demo plan gratuito</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<div class="shell">
+  <aside class="side">
+    <a href="index.html" class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-text">Plan Gratuito<small>demo de herramientas</small></span>
+    </a>
+    <div class="nav-group-label">Herramientas</div>
+    <ul class="nav-list">
+      <li><a href="index.html"><span class="bullet"></span>Resumen</a></li>
+      <li><a href="heatmaps.html"><span class="bullet"></span>Mapas de calor</a></li>
+      <li><a href="recordings.html"><span class="bullet"></span>Grabaciones de sesión</a></li>
+      <li><a href="funnels.html"><span class="bullet"></span>Embudos de conversión</a></li>
+      <li><a href="forms.html"><span class="bullet"></span>Analítica de formularios</a></li>
+      <li><a href="plan.html"><span class="bullet"></span>Plan y límites</a></li>
+    </ul>
+    <div class="side-foot">
+      Simulación educativa, sin conexión a cuentas reales.<br>
+      <a href="https://mouseflow.com" target="_blank" rel="noopener">mouseflow.com ↗</a>
+    </div>
+  </aside>
+
+  <div class="topbar">
+    <a href="index.html" class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-text">Plan Gratuito</span>
+    </a>
+  </div>
+  <nav class="topbar-nav">
+    <a href="index.html">Resumen</a>
+    <a href="heatmaps.html">Mapas de calor</a>
+    <a href="recordings.html">Grabaciones</a>
+    <a href="funnels.html">Embudos</a>
+    <a href="forms.html">Formularios</a>
+    <a href="plan.html">Plan</a>
+  </nav>
+
+  <main class="main">
+    <div class="container">
+
+      <div class="page-head">
+        <div class="eyebrow"><span class="dot"></span>Herramienta 04</div>
+        <h1>Analítica de formularios</h1>
+        <p class="lead">
+          Rellena el formulario de ejemplo. A la derecha verás, en vivo, cuánto tiempo
+          pasas en cada campo y cuál genera más fricción, exactamente el tipo de
+          información que esta herramienta expone campo por campo.
+        </p>
+      </div>
+
+      <div class="demo-layout">
+
+        <div class="card">
+          <div class="panel-title">Formulario de contacto — ejemplo</div>
+          <form id="demo-form" novalidate>
+            <div class="field" data-field="nombre">
+              <label for="f-nombre">Nombre completo</label>
+              <input id="f-nombre" name="nombre" type="text" placeholder="Ej. Ana Torres" autocomplete="off">
+            </div>
+            <div class="field" data-field="email">
+              <label for="f-email">Correo electrónico</label>
+              <input id="f-email" name="email" type="email" placeholder="ana@correo.com" autocomplete="off">
+            </div>
+            <div class="field" data-field="telefono">
+              <label for="f-telefono">Teléfono</label>
+              <input id="f-telefono" name="telefono" type="tel" placeholder="+52 000 000 0000" autocomplete="off">
+            </div>
+            <div class="field" data-field="mensaje">
+              <label for="f-mensaje">Mensaje</label>
+              <textarea id="f-mensaje" name="mensaje" rows="3" placeholder="Cuéntanos qué necesitas…"></textarea>
+            </div>
+            <label class="checkline" style="margin-bottom:18px;">
+              <input type="checkbox" id="f-check"> Acepto que me contacten sobre este mensaje
+            </label>
+            <div class="btn-row">
+              <button type="submit" class="btn accent">Enviar formulario</button>
+              <button type="button" class="btn ghost" id="reset-form">Reiniciar demo</button>
+            </div>
+          </form>
+        </div>
+
+        <aside>
+          <div class="card" style="margin-bottom:14px;">
+            <div class="panel-title">Análisis por campo <span>en vivo</span></div>
+            <div class="field-report" id="field-report"></div>
+          </div>
+          <div class="card">
+            <div class="panel-title">Finalización del formulario</div>
+            <div class="gauge-wrap">
+              <div class="gauge-num" id="completion-num">0%</div>
+              <div class="gauge-label">campos completados</div>
+            </div>
+            <p id="friction-note" style="font-size:.8rem; margin:8px 0 0; text-align:center;">
+              Empieza a escribir para ver el análisis.
+            </p>
+          </div>
+        </aside>
+
+      </div>
+
+      <p class="disclaimer">
+        Los tiempos y porcentajes se calculan localmente a partir de tus propias
+        interacciones con este formulario de ejemplo. En un plan gratuito real, estos
+        datos se agregan entre todos tus visitantes para detectar campos confusos,
+        errores de validación frecuentes o abandono del formulario.
+      </p>
+
+    </div>
+  </main>
+</div>
+
+<script src="assets/js/main.js"></script>
+<script src="assets/js/forms.js"></script>
+</body>
+</html>
